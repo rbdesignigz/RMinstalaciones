@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Servicios profesionales de instalaciones sanitarias, fontaneria y reparaciones. Ramon Martinez - Calidad y confianza en cada trabajo." />
+  <meta name="theme-color" content="#1e3a5f" />
+  <title>RM Instalaciones Sanitarias | Ramon Martinez</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            heading: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              50: '#e8eef5',
+              100: '#c5d4e8',
+              200: '#9fb7d8',
+              300: '#7a9ac8',
+              400: '#5e83bc',
+              500: '#426db0',
+              600: '#3a61a0',
+              700: '#2f508a',
+              800: '#1e3a5f',
+              900: '#152a45',
+              950: '#0d1a2d',
+            },
+            sky: {
+              light: '#a8c8e8',
+              DEFAULT: '#7aaed4',
+              dark: '#5a94c0',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #152a45; }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    .animate-delay-100 { animation-delay: 0.1s; }
+    .animate-delay-200 { animation-delay: 0.2s; }
+    .animate-delay-300 { animation-delay: 0.3s; }
+    .animate-delay-400 { animation-delay: 0.4s; }
+    .animate-delay-500 { animation-delay: 0.5s; }
+
+    /* Lightbox */
+    .lightbox-open { overflow: hidden; }
+
+    /* Service card hover line */
+    .service-card .service-line {
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+    .service-card:hover .service-line {
+      transform: scaleX(1);
+    }
+    .service-card:hover .service-icon {
+      transform: scale(1.1);
+    }
+
+    /* Gallery hover */
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.1);
+    }
+    .gallery-item:hover .gallery-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Nav underline */
+    .nav-link .nav-underline {
+      width: 0;
+      left: 50%;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover .nav-underline {
+      width: 50%;
+      left: 25%;
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased bg-[#f5f7fa] text-[#1a2a3a]">
+
+  <!-- ========================================== -->
+  <!-- NAVBAR -->
+  <!-- ========================================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-20 items-center justify-between">
+        <!-- Logo -->
+        <a href="#inicio" class="flex items-center gap-3">
+          <img src="/images/logo.png" alt="RM Instalaciones Sanitarias" class="h-12 w-12 rounded-full object-cover" />
+          <div class="hidden sm:block">
+            <p class="font-heading text-lg font-bold text-white leading-tight">RM Instalaciones</p>
+            <p class="text-xs text-sky-light tracking-wider uppercase">Sanitarias</p>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="#inicio" class="nav-link relative px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors duration-300">
+            Inicio
+            <span class="nav-underline absolute bottom-0 h-0.5 bg-sky-light rounded-full"></span>
+          </a>
+          <a href="#servicios" class="nav-link relative px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors duration-300">
+            Servicios
+            <span class="nav-underline absolute bottom-0 h-0.5 bg-sky-light rounded-full"></span>
+          </a>
+          <a href="#galeria" class="nav-link relative px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors duration-300">
+            Galería
+            <span class="nav-underline absolute bottom-0 h-0.5 bg-sky-light rounded-full"></span>
+          </a>
+          <a href="#contacto" class="nav-link relative px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors duration-300">
+            Contacto
+            <span class="nav-underline absolute bottom-0 h-0.5 bg-sky-light rounded-full"></span>
+          </a>
+          <a href="#ubicacion" class="nav-link relative px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors duration-300">
+            Ubicación
+            <span class="nav-underline absolute bottom-0 h-0.5 bg-sky-light rounded-full"></span>
+          </a>
+          <a href="tel:+34600000000" class="ml-4 flex items-center gap-2 rounded-full bg-sky px-5 py-2.5 text-sm font-semibold text-navy-900 transition-all duration-300 hover:bg-white hover:shadow-lg">
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            Llamar
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button onclick="toggleMobileMenu()" class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors" aria-label="Abrir menu">
+          <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
+          <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0">
+      <div class="bg-navy-900/95 backdrop-blur-md px-4 pb-6 pt-2 space-y-1">
+        <a href="#inicio" onclick="closeMobileMenu()" class="block rounded-lg px-4 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200">Inicio</a>
+        <a href="#servicios" onclick="closeMobileMenu()" class="block rounded-lg px-4 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200">Servicios</a>
+        <a href="#galeria" onclick="closeMobileMenu()" class="block rounded-lg px-4 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200">Galeria</a>
+        <a href="#contacto" onclick="closeMobileMenu()" class="block rounded-lg px-4 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200">Contacto</a>
+        <a href="#ubicacion" onclick="closeMobileMenu()" class="block rounded-lg px-4 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200">Ubicacion</a>
+        <a href="tel:3757549548" class="flex items-center justify-center gap-2 mt-4 rounded-full bg-sky px-5 py-3 text-sm font-semibold text-navy-900 transition-all duration-300 hover:bg-white">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          Llamar
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- HERO -->
+  <!-- ========================================== -->
+  <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0">
+      <img src="/images/hero-bg.png" alt="" class="h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-navy-950/80"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-950/40 via-transparent to-navy-950/90"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32 text-center">
+      <!-- Badge -->
+      <div class="animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-sky/30 bg-sky/10 px-5 py-2 mb-8 backdrop-blur-sm">
+        <i data-lucide="star" class="w-4 h-4 text-sky-light"></i>
+        <span class="text-sm font-medium text-sky-light">Mas de 15 años de experiencia</span>
+      </div>
+
+      <!-- Logo -->
+      <div class="animate-fade-in-up animate-delay-100 mb-8 flex justify-center">
+        <img src="/images/logo.png" alt="RM Instalaciones Sanitarias" class="h-40 w-40 sm:h-48 sm:w-48 rounded-full shadow-2xl shadow-sky/20 border-4 border-white/10" />
+      </div>
+
+      <h1 class="animate-fade-in-up animate-delay-200 font-heading text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tight" style="text-wrap: balance;">
+        Ramon Martinez
+      </h1>
+      <p class="animate-fade-in-up animate-delay-300 mt-4 font-heading text-xl sm:text-2xl md:text-3xl font-semibold text-sky tracking-wide">
+        Instalaciones Sanitarias
+      </p>
+      <p class="animate-fade-in-up animate-delay-300 mx-auto mt-6 max-w-2xl text-lg text-white/70 leading-relaxed">
+        Soluciones profesionales en fontanería e instalaciones sanitarias.
+        Calidad, compromiso y atención personalizada en cada proyecto.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="animate-fade-in-up animate-delay-400 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#contacto" class="group relative inline-flex items-center gap-2 rounded-full bg-sky px-8 py-4 text-base font-semibold text-navy-900 transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-sky/25 hover:scale-105">
+          Solicitar Presupuesto
+          <i data-lucide="arrow-down" class="w-4 h-4 transition-transform group-hover:translate-y-0.5"></i>
+        </a>
+        <a href="#servicios" class="inline-flex items-center gap-2 rounded-full border-2 border-white/20 px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:border-sky hover:text-sky hover:bg-white/5">
+          Ver Servicios
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="animate-fade-in-up animate-delay-500 mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
+        <div class="flex flex-col items-center gap-2 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6">
+          <i data-lucide="shield" class="w-6 h-6 text-sky mb-1"></i>
+          <span class="font-heading text-3xl font-bold text-white">+500</span>
+          <span class="text-sm text-white/60">Trabajos realizados</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6">
+          <i data-lucide="clock" class="w-6 h-6 text-sky mb-1"></i>
+          <span class="font-heading text-3xl font-bold text-white">15+</span>
+          <span class="text-sm text-white/60">Años de experiencia</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6">
+          <i data-lucide="star" class="w-6 h-6 text-sky mb-1"></i>
+          <span class="font-heading text-3xl font-bold text-white">100%</span>
+          <span class="text-sm text-white/60">Clientes satisfechos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+      <a href="#servicios" class="flex flex-col items-center gap-2 text-white/40 hover:text-white/70 transition-colors" aria-label="Desplazar hacia abajo">
+        <span class="text-xs tracking-widest uppercase">Descubre mas</span>
+        <div class="h-10 w-6 rounded-full border-2 border-current flex justify-center pt-2">
+          <div class="h-2 w-1 rounded-full bg-current animate-bounce"></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SERVICES -->
+  <!-- ========================================== -->
+  <section id="servicios" class="py-24 lg:py-32 bg-[#f5f7fa]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <span class="inline-block text-sm font-semibold tracking-widest uppercase text-sky-dark mb-4">
+          Nuestros Servicios
+        </span>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800" style="text-wrap: balance;">
+          Soluciones completas en instalaciones sanitarias
+        </h2>
+        <p class="mt-6 text-lg text-navy-800/60 leading-relaxed">
+          Ofrecemos una amplia gama de servicios profesionales para cubrir
+          todas tus necesidades de fontanería e instalaciones sanitarias.
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Service 1 -->
+        <div class="service-card group relative rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-500 hover:shadow-xl hover:shadow-sky/10 hover:border-sky/30 hover:-translate-y-1">
+          <div class="service-icon mb-6 inline-flex items-center justify-center rounded-xl bg-navy-800 p-3.5 text-white shadow-lg shadow-navy-800/20 transition-transform duration-300">
+            <i data-lucide="droplets" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-navy-800 mb-3">Fontanería General</h3>
+          <p class="text-navy-800/60 leading-relaxed text-sm">
+            Instalación, reparación y mantenimiento de sistemas de agua fría y caliente para hogares y negocios.
+          </p>
+          <div class="service-line absolute bottom-0 left-8 right-8 h-0.5 bg-sky rounded-full"></div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card group relative rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-500 hover:shadow-xl hover:shadow-sky/10 hover:border-sky/30 hover:-translate-y-1">
+          <div class="service-icon mb-6 inline-flex items-center justify-center rounded-xl bg-navy-800 p-3.5 text-white shadow-lg shadow-navy-800/20 transition-transform duration-300">
+            <i data-lucide="shower-head" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-navy-800 mb-3">Baños y Duchas</h3>
+          <p class="text-navy-800/60 leading-relaxed text-sm">
+            Instalación completa de baños, platos de ducha, mamparas y grifería de última generación.
+          </p>
+          <div class="service-line absolute bottom-0 left-8 right-8 h-0.5 bg-sky rounded-full"></div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card group relative rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-500 hover:shadow-xl hover:shadow-sky/10 hover:border-sky/30 hover:-translate-y-1">
+          <div class="service-icon mb-6 inline-flex items-center justify-center rounded-xl bg-navy-800 p-3.5 text-white shadow-lg shadow-navy-800/20 transition-transform duration-300">
+            <i data-lucide="flame" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-navy-800 mb-3">Calentadores y Calderas</h3>
+          <p class="text-navy-800/60 leading-relaxed text-sm">
+            Instalación y mantenimiento de calentadores de agua, calderas y sistemas de calefacción.
+          </p>
+          <div class="service-line absolute bottom-0 left-8 right-8 h-0.5 bg-sky rounded-full"></div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card group relative rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-500 hover:shadow-xl hover:shadow-sky/10 hover:border-sky/30 hover:-translate-y-1">
+          <div class="service-icon mb-6 inline-flex items-center justify-center rounded-xl bg-navy-800 p-3.5 text-white shadow-lg shadow-navy-800/20 transition-transform duration-300">
+            <i data-lucide="pipette" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-navy-800 mb-3">Tuberias y Desagues</h3>
+          <p class="text-navy-800/60 leading-relaxed text-sm">
+            Instalación y reparación de tuberías, desagües y sistemas de evacuación de aguas.
+          </p>
+          <div class="service-line absolute bottom-0 left-8 right-8 h-0.5 bg-sky rounded-full"></div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card group relative rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-500 hover:shadow-xl hover:shadow-sky/10 hover:border-sky/30 hover:-translate-y-1">
+          <div class="service-icon mb-6 inline-flex items-center justify-center rounded-xl bg-navy-800 p-3.5 text-white shadow-lg shadow-navy-800/20 transition-transform duration-300">
+            <i data-lucide="wrench" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-navy-800 mb-3">Reparaciones Urgentes</h3>
+          <p class="text-navy-800/60 leading-relaxed text-sm">
+            Servicio de urgencias para fugas, atascos y averias. Respuesta rapida garantizada.
+          </p>
+          <div class="service-line absolute bottom-0 left-8 right-8 h-0.5 bg-sky rounded-full"></div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card group relative rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-500 hover:shadow-xl hover:shadow-sky/10 hover:border-sky/30 hover:-translate-y-1">
+          <div class="service-icon mb-6 inline-flex items-center justify-center rounded-xl bg-navy-800 p-3.5 text-white shadow-lg shadow-navy-800/20 transition-transform duration-300">
+            <i data-lucide="settings" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-navy-800 mb-3">Mantenimiento Preventivo</h3>
+          <p class="text-navy-800/60 leading-relaxed text-sm">
+            Planes de mantenimiento para prevenir averias y asegurar el óptimo funcionamiento.
+          </p>
+          <div class="service-line absolute bottom-0 left-8 right-8 h-0.5 bg-sky rounded-full"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- GALLERY -->
+  <!-- ========================================== -->
+  <section id="galeria" class="py-24 lg:py-32 bg-navy-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <span class="inline-block text-sm font-semibold tracking-widest uppercase text-sky mb-4">
+          Nuestro Trabajo
+        </span>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white" style="text-wrap: balance;">
+          Galería de proyectos realizados
+        </h2>
+        <p class="mt-6 text-lg text-white/60 leading-relaxed">
+          Cada proyecto es una muestra de nuestro compromiso con la calidad.
+          Descubre algunos de nuestros trabajos mas destacados.
+        </p>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <button onclick="openLightbox(0)" class="gallery-item group relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky focus:ring-offset-2 focus:ring-offset-navy-800">
+          <img src="/images/gal1.jpeg" alt="Renovacion de bano moderno" class="gallery-img h-full w-full object-cover transition-transform duration-700" />
+          <div class="gallery-overlay absolute inset-0 bg-navy-950/60 opacity-0 transition-all duration-500"></div>
+          <div class="absolute inset-0 flex items-end p-6">
+            <div class="gallery-label opacity-0 translate-y-4 transition-all duration-500">
+              <span class="inline-block rounded-full bg-sky px-4 py-1.5 text-sm font-semibold text-navy-900">Renovación de baño</span>
+            </div>
+          </div>
+        </button>
+
+        <button onclick="openLightbox(1)" class="gallery-item group relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky focus:ring-offset-2 focus:ring-offset-navy-800">
+          <img src="/images/gal2.jpeg" alt="Instalacion de cocina" class="gallery-img h-full w-full object-cover transition-transform duration-700" />
+          <div class="gallery-overlay absolute inset-0 bg-navy-950/60 opacity-0 transition-all duration-500"></div>
+          <div class="absolute inset-0 flex items-end p-6">
+            <div class="gallery-label opacity-0 translate-y-4 transition-all duration-500">
+              <span class="inline-block rounded-full bg-sky px-4 py-1.5 text-sm font-semibold text-navy-900">Instalación de cocina</span>
+            </div>
+          </div>
+        </button>
+
+        <button onclick="openLightbox(2)" class="gallery-item group relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky focus:ring-offset-2 focus:ring-offset-navy-800">
+          <img src="/images/gal3.jpeg" alt="Calentador de agua" class="gallery-img h-full w-full object-cover transition-transform duration-700" />
+          <div class="gallery-overlay absolute inset-0 bg-navy-950/60 opacity-0 transition-all duration-500"></div>
+          <div class="absolute inset-0 flex items-end p-6">
+            <div class="gallery-label opacity-0 translate-y-4 transition-all duration-500">
+              <span class="inline-block rounded-full bg-sky px-4 py-1.5 text-sm font-semibold text-navy-900">Calentador de agua</span>
+            </div>
+          </div>
+        </button>
+
+        <button onclick="openLightbox(3)" class="gallery-item group relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky focus:ring-offset-2 focus:ring-offset-navy-800">
+          <img src="/images/gal4.jpeg" alt="Instalacion de ducha" class="gallery-img h-full w-full object-cover transition-transform duration-700" />
+          <div class="gallery-overlay absolute inset-0 bg-navy-950/60 opacity-0 transition-all duration-500"></div>
+          <div class="absolute inset-0 flex items-end p-6">
+            <div class="gallery-label opacity-0 translate-y-4 transition-all duration-500">
+              <span class="inline-block rounded-full bg-sky px-4 py-1.5 text-sm font-semibold text-navy-900">Ducha de lujo</span>
+            </div>
+          </div>
+        </button>
+
+        <button onclick="openLightbox(4)" class="gallery-item group relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky focus:ring-offset-2 focus:ring-offset-navy-800">
+          <img src="/images/gal5.jpeg" alt="Reparacion de tuberias" class="gallery-img h-full w-full object-cover transition-transform duration-700" />
+          <div class="gallery-overlay absolute inset-0 bg-navy-950/60 opacity-0 transition-all duration-500"></div>
+          <div class="absolute inset-0 flex items-end p-6">
+            <div class="gallery-label opacity-0 translate-y-4 transition-all duration-500">
+              <span class="inline-block rounded-full bg-sky px-4 py-1.5 text-sm font-semibold text-navy-900">Reparación de tuberías</span>
+            </div>
+          </div>
+        </button>
+
+        <button onclick="openLightbox(5)" class="gallery-item group relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky focus:ring-offset-2 focus:ring-offset-navy-800">
+          <img src="/images/galeria05.png" alt="Instalacion de sanitarios" class="gallery-img h-full w-full object-cover transition-transform duration-700" />
+          <div class="gallery-overlay absolute inset-0 bg-navy-950/60 opacity-0 transition-all duration-500"></div>
+          <div class="absolute inset-0 flex items-end p-6">
+            <div class="gallery-label opacity-0 translate-y-4 transition-all duration-500">
+              <span class="inline-block rounded-full bg-sky px-4 py-1.5 text-sm font-semibold text-navy-900">Sanitarios modernos</span>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4" role="dialog" aria-modal="true" aria-label="Visor de imagenes" onclick="closeLightbox(event)">
+      <button onclick="event.stopPropagation(); closeLightbox(event)" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10" aria-label="Cerrar">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <button onclick="event.stopPropagation(); lightboxPrev()" class="absolute left-4 sm:left-8 text-white/70 hover:text-white transition-colors z-10" aria-label="Imagen anterior">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button onclick="event.stopPropagation(); lightboxNext()" class="absolute right-4 sm:right-8 text-white/70 hover:text-white transition-colors z-10" aria-label="Imagen siguiente">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <img id="lightbox-img" src="" alt="" class="max-h-[85vh] max-w-[90vw] rounded-xl object-contain shadow-2xl" onclick="event.stopPropagation()" />
+      <div id="lightbox-dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2"></div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- CONTACT -->
+  <!-- ========================================== -->
+  <section id="contacto" class="py-24 lg:py-32 bg-[#f5f7fa]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <span class="inline-block text-sm font-semibold tracking-widest uppercase text-sky-dark mb-4">
+          Contacto
+        </span>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800" style="text-wrap: balance;">
+          Hablemos de tu proyecto
+        </h2>
+        <p class="mt-6 text-lg text-navy-800/60 leading-relaxed">
+          Cuentanos que necesitas y te enviaremos un presupuesto sin compromiso. Respondemos en menos de 24 horas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+        <!-- Contact Info -->
+        <div class="lg:col-span-2 space-y-8">
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 rounded-xl bg-navy-800 p-3 text-white shadow-lg shadow-navy-800/20">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-navy-800">Teléfono</h3>
+                <a href="tel:3757123456" class="text-navy-800/60 hover:text-navy-800 transition-colors">3757 549548</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 rounded-xl bg-navy-800 p-3 text-white shadow-lg shadow-navy-800/20">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-navy-800">Email</h3>
+                <a href="mailto:rminstalaciones@gmail.com" class="text-navy-800/60 hover:text-navy-800 transition-colors">rminstalaciones@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 rounded-xl bg-navy-800 p-3 text-white shadow-lg shadow-navy-800/20">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-navy-800">Ubicación</h3>
+                <p class="text-navy-800/60">Puerto Iguazú, Misiones, Argentina</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Working hours -->
+          <div class="rounded-2xl border border-gray-200 bg-white p-6">
+            <h3 class="font-heading font-semibold text-navy-800 mb-4">Horario de atención</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-navy-800/60">Lunes - Viernes</span>
+                <span class="font-semibold text-navy-800">7:00 - 18:00</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-navy-800/60">Sabados</span>
+                <span class="font-semibold text-navy-800">7:00 - 12:00</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-navy-800/60">Urgencias</span>
+                <span class="font-semibold text-sky-dark">24/7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="lg:col-span-3">
+          <form id="contact-form" class="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" onsubmit="handleContactSubmit(event)">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="name" class="text-sm font-medium text-navy-800">Nombre completo</label>
+                <input id="name" name="name" type="text" required class="w-full rounded-xl border border-gray-200 bg-[#f5f7fa] px-4 py-3 text-sm text-navy-800 placeholder:text-navy-800/40 focus:outline-none focus:ring-2 focus:ring-navy-800 focus:border-transparent transition-all" placeholder="Tu nombre" />
+              </div>
+              <div class="space-y-2">
+                <label for="email" class="text-sm font-medium text-navy-800">Correo electronico</label>
+                <input id="email" name="email" type="email" required class="w-full rounded-xl border border-gray-200 bg-[#f5f7fa] px-4 py-3 text-sm text-navy-800 placeholder:text-navy-800/40 focus:outline-none focus:ring-2 focus:ring-navy-800 focus:border-transparent transition-all" placeholder="tu@email.com" />
+              </div>
+            </div>
+            <div class="mt-6 space-y-2">
+              <label for="phone-input" class="text-sm font-medium text-navy-800">Teléfono</label>
+              <input id="phone-input" name="phone" type="tel" class="w-full rounded-xl border border-gray-200 bg-[#f5f7fa] px-4 py-3 text-sm text-navy-800 placeholder:text-navy-800/40 focus:outline-none focus:ring-2 focus:ring-navy-800 focus:border-transparent transition-all" placeholder="+34 600 000 000" />
+            </div>
+            <div class="mt-6 space-y-2">
+              <label for="message" class="text-sm font-medium text-navy-800">Mensaje</label>
+              <textarea id="message" name="message" required rows="5" class="w-full rounded-xl border border-gray-200 bg-[#f5f7fa] px-4 py-3 text-sm text-navy-800 placeholder:text-navy-800/40 focus:outline-none focus:ring-2 focus:ring-navy-800 focus:border-transparent transition-all resize-none" placeholder="Describe tu proyecto o problema..."></textarea>
+            </div>
+            <button id="submit-btn" type="submit" class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-navy-800 px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-navy-900 hover:shadow-lg hover:shadow-navy-800/25">
+              <i data-lucide="send" class="w-5 h-5"></i>
+              <span id="submit-text">Enviar mensaje</span>
+            </button>
+            <!-- Status messages -->
+            <div id="form-success" class="hidden mt-4 p-4 rounded-xl bg-green-50 text-green-700 text-sm font-medium text-center">
+              Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.
+            </div>
+            <div id="form-error" class="hidden mt-4 p-4 rounded-xl bg-red-50 text-red-700 text-sm font-medium text-center">
+              Error al enviar el mensaje. Por favor, intenta de nuevo.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- MAP -->
+  <!-- ========================================== -->
+  <section id="ubicacion" class="py-24 lg:py-32 bg-gray-100">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-block text-sm font-semibold tracking-widest uppercase text-sky-dark mb-4">
+          Ubicación
+        </span>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-800" style="text-wrap: balance;">
+          Donde nos encontramos
+        </h2>
+        <p class="mt-6 text-lg text-navy-800/60 leading-relaxed">
+          Cubrimos toda la zona de Puerto Iguazú y alrrededores. Contactanos para confirmar disponibilidad en tu zona.
+        </p>
+      </div>
+
+      <!-- Map -->
+      <div class="overflow-hidden rounded-2xl border border-gray-200 shadow-xl">
+        <iframe
+          title="Ubicacion de RM Instalaciones Sanitarias"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d266.7278768934962!2d-54.56237647155462!3d-25.61315299906883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f693adac406cb9%3A0x8a14a9c49b6a9a45!2sCardenal%2024%2C%20N3370%20Puerto%20Iguaz%C3%BA%2C%20Misiones%2C%20Argentina!5e1!3m2!1ses-419!2sao!4v1770393934415!5m2!1ses-419!2sao"
+          width="100%"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="w-full">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- FOOTER -->
+  <!-- ========================================== -->
+  <footer class="bg-navy-950 text-white">
+    <!-- Main Footer -->
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <!-- Brand -->
+        <div class="lg:col-span-1">
+          <div class="flex items-center gap-3 mb-6">
+            <img src="/images/logo.png" alt="RM Instalaciones Sanitarias" class="h-14 w-14 rounded-full" />
+            <div>
+              <p class="font-heading text-lg font-bold leading-tight">RM Instalaciones</p>
+              <p class="text-xs text-sky tracking-wider uppercase">Sanitarias</p>
+            </div>
+          </div>
+          <p class="text-white/60 text-sm leading-relaxed mb-6">
+            Soluciones profesionales en fontaneria e instalaciones sanitarias.
+            Mas de 15 anos de experiencia al servicio de nuestros clientes.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="font-heading font-semibold text-white mb-6 text-sm tracking-wider uppercase">Navegación</h3>
+          <ul class="space-y-3">
+            <li><a href="#inicio" class="text-white/60 hover:text-sky transition-colors text-sm">Inicio</a></li>
+            <li><a href="#servicios" class="text-white/60 hover:text-sky transition-colors text-sm">Servicios</a></li>
+            <li><a href="#galeria" class="text-white/60 hover:text-sky transition-colors text-sm">Galería</a></li>
+            <li><a href="#contacto" class="text-white/60 hover:text-sky transition-colors text-sm">Contacto</a></li>
+            <li><a href="#ubicacion" class="text-white/60 hover:text-sky transition-colors text-sm">Ubicación</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="font-heading font-semibold text-white mb-6 text-sm tracking-wider uppercase">Servicios</h3>
+          <ul class="space-y-3">
+            <li><span class="text-white/60 text-sm">Fontaneria General</span></li>
+            <li><span class="text-white/60 text-sm">Banos y Duchas</span></li>
+            <li><span class="text-white/60 text-sm">Calentadores y Calderas</span></li>
+            <li><span class="text-white/60 text-sm">Tuberias y Desagues</span></li>
+            <li><span class="text-white/60 text-sm">Reparaciones Urgentes</span></li>
+            <li><span class="text-white/60 text-sm">Mantenimiento Preventivo</span></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 class="font-heading font-semibold text-white mb-6 text-sm tracking-wider uppercase">Contacto</h3>
+          <div class="space-y-4">
+            <a href="tel:+543757549647" class="flex items-center gap-3 text-white/60 hover:text-sky transition-colors text-sm">
+              <i data-lucide="phone" class="w-4 h-4 flex-shrink-0"></i>
+              3757549548
+            </a>
+            <a href="mailto:pablo.da.ber@gmail.com" class="flex items-center gap-3 text-white/60 hover:text-sky transition-colors text-sm">
+              <i data-lucide="mail" class="w-4 h-4 flex-shrink-0"></i>
+              rminstalaciones@gmail.com
+            </a>
+            <div class="flex items-start gap-3 text-white/60 text-sm">
+              <i data-lucide="map-pin" class="w-4 h-4 flex-shrink-0 mt-0.5"></i>
+              <span>Puerto Iguazú, Misiones</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-white/40 text-sm text-center sm:text-left">
+          &copy; 2026 RM Instalaciones Sanitarias. rbdesign
+        </p>
+        <p class="text-white/40 text-sm">
+          Ramon Martinez - Profesional de confianza
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT -->
+  <!-- ========================================== -->
+  <script>
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+    });
+
+    // ===== NAVBAR SCROLL EFFECT =====
+    window.addEventListener('scroll', function() {
+      var navbar = document.getElementById('navbar');
+      if (window.scrollY > 20) {
+        navbar.classList.remove('bg-transparent');
+        navbar.classList.add('bg-navy-800/95', 'backdrop-blur-md', 'shadow-lg');
+      } else {
+        navbar.classList.add('bg-transparent');
+        navbar.classList.remove('bg-navy-800/95', 'backdrop-blur-md', 'shadow-lg');
+      }
+    });
+
+    // ===== MOBILE MENU =====
+    var mobileMenuOpen = false;
+
+    function toggleMobileMenu() {
+      mobileMenuOpen = !mobileMenuOpen;
+      var menu = document.getElementById('mobile-menu');
+      var iconOpen = document.getElementById('menu-icon-open');
+      var iconClose = document.getElementById('menu-icon-close');
+
+      if (mobileMenuOpen) {
+        menu.classList.remove('max-h-0', 'opacity-0');
+        menu.classList.add('max-h-96', 'opacity-100');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      } else {
+        menu.classList.add('max-h-0', 'opacity-0');
+        menu.classList.remove('max-h-96', 'opacity-100');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      }
+    }
+
+    function closeMobileMenu() {
+      mobileMenuOpen = false;
+      var menu = document.getElementById('mobile-menu');
+      var iconOpen = document.getElementById('menu-icon-open');
+      var iconClose = document.getElementById('menu-icon-close');
+      menu.classList.add('max-h-0', 'opacity-0');
+      menu.classList.remove('max-h-96', 'opacity-100');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+
+    // ===== LIGHTBOX =====
+    var galleryImages = [
+      { src: '/images/gal1.jpeg', alt: 'Renovacion de bano moderno' },
+      { src: '/images/gal2.jpeg', alt: 'Instalacion de cocina' },
+      { src: '/images/gal3.jpeg', alt: 'Calentador de agua' },
+      { src: '/images/gal4.jpeg', alt: 'Instalacion de ducha' },
+      { src: '/images/gal5.jpeg', alt: 'Reparacion de tuberias' },
+      { src: '/images/galeria05.png', alt: 'Instalacion de sanitarios' },
+    ];
+    var currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      var lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.classList.add('lightbox-open');
+      updateLightboxImage();
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target !== document.getElementById('lightbox') && !e.target.closest('[aria-label="Cerrar"]')) return;
+      var lightbox = document.getElementById('lightbox');
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.classList.remove('lightbox-open');
+    }
+
+    function lightboxNext() {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      updateLightboxImage();
+    }
+
+    function lightboxPrev() {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      updateLightboxImage();
+    }
+
+    function updateLightboxImage() {
+      var img = document.getElementById('lightbox-img');
+      img.src = galleryImages[currentIndex].src;
+      img.alt = galleryImages[currentIndex].alt;
+
+      // Update dots
+      var dotsContainer = document.getElementById('lightbox-dots');
+      dotsContainer.innerHTML = '';
+      for (var i = 0; i < galleryImages.length; i++) {
+        var dot = document.createElement('button');
+        dot.setAttribute('aria-label', 'Ver imagen ' + (i + 1));
+        dot.className = 'h-2 rounded-full transition-all duration-300 ' +
+          (i === currentIndex ? 'w-8 bg-sky' : 'w-2 bg-white/40 hover:bg-white/70');
+        dot.dataset.index = i;
+        dot.onclick = function(e) {
+          e.stopPropagation();
+          currentIndex = parseInt(this.dataset.index);
+          updateLightboxImage();
+        };
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', function(e) {
+      var lightbox = document.getElementById('lightbox');
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape') { closeLightbox({ target: lightbox }); }
+      if (e.key === 'ArrowRight') lightboxNext();
+      if (e.key === 'ArrowLeft') lightboxPrev();
+    });
+
+    // ===== CONTACT FORM =====
+    function handleContactSubmit(e) {
+      e.preventDefault();
+
+      var form = document.getElementById('contact-form');
+      var btn = document.getElementById('submit-btn');
+      var submitText = document.getElementById('submit-text');
+      var successMsg = document.getElementById('form-success');
+      var errorMsg = document.getElementById('form-error');
+
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var phone = document.getElementById('phone-input').value;
+      var message = document.getElementById('message').value;
+
+      // Show loading
+      btn.disabled = true;
+      submitText.textContent = 'Enviando...';
+
+      // Use mailto as fallback - builds a mailto link and opens it
+      // For a real backend, replace this with a fetch to your API
+      var subject = encodeURIComponent('Nuevo contacto de ' + name);
+      var body = encodeURIComponent(
+        'Nombre: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Telefono: ' + phone + '\n\n' +
+        'Mensaje:\n' + message
+      );
+
+      // Open mailto link
+      window.location.href = 'mailto:info@rminstalaciones.com?subject=' + subject + '&body=' + body;
+
+      // Show success after a short delay
+      setTimeout(function() {
+        btn.disabled = false;
+        submitText.textContent = 'Enviar mensaje';
+        successMsg.classList.remove('hidden');
+        errorMsg.classList.add('hidden');
+        form.reset();
+
+        setTimeout(function() {
+          successMsg.classList.add('hidden');
+        }, 5000);
+      }, 1000);
+    }
+
+    // ===== SCROLL REVEAL ANIMATION =====
+    var observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.service-card, .gallery-item').forEach(function(el) {
+        observer.observe(el);
+      });
+    });
+  </script>
+
+</body>
+</html>
